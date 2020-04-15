@@ -9,13 +9,12 @@ class Home extends React.Component {
     super(props);
     this.state = { 
       product: '', customer: '', amazon: '', facebook: '', microsoft: '', google: '',
-      facebookPercent: '', facebookPerson: '', microsoftPerson: '',
-      ready: true
+      facebookPercent: '', facebookPerson: '', microsoftPerson: ''
     }; 
   }
 
   async componentDidMount() {
-    const res = await fetch(`http://localhost:5000/random`)
+    const res = await fetch(`http://localhost:8584/random`)
       .then(res => res.json())
       .then(res => {
         const madlibs = res;
@@ -36,7 +35,9 @@ class Home extends React.Component {
       <div>
         <h1>PM Interviews Against Humanity</h1>
         <p>Inspired by the first 200 white cards from Cards Against Humanity&trade;</p>
-        <button onClick={()=>window.location.reload(true)}>Gimme More Questions!</button>
+        <button autoFocus onClick={()=>window.location.reload(true)}>
+          Gimme More Questions!
+        </button>
         <div className='question'>
           <h2>Generic Interview Question</h2>
           <p>{`Design ${this.state.product} for ${this.state.customer}`}.</p>
